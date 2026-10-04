@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+/* O tema escuro é ligado pela classe "dark" no <html> (ver useTheme.ts),
+   e não só pela configuração do aparelho, para o botão de tema funcionar. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+}
+
+html {
+  background: #0f172a;
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Fundo dinâmico (cenários definidos em src/lib/scene.ts) ---------- */
+
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--scene);
+}
+/* No tema escuro, o mesmo cenário aparece escurecido. */
+.dark .scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(2 6 23 / 0.5);
+}
+
+.scene-day {
+  --scene: linear-gradient(180deg, #0284c7 0%, #38bdf8 40%, #bae6fd 100%);
+}
+.scene-dawn {
+  --scene: linear-gradient(180deg, #4f46e5 0%, #c084fc 35%, #f9a8d4 65%, #fed7aa 100%);
+}
+.scene-dusk {
+  --scene: linear-gradient(180deg, #1e1b4b 0%, #7c3aed 35%, #db2777 65%, #fb923c 100%);
+}
+/* A noite de céu limpo ganha o brilho de aurora que dá nome ao app. */
+.scene-night {
+  --scene:
+    radial-gradient(ellipse 70% 40% at 15% 0%, rgb(52 211 153 / 0.28), transparent),
+    radial-gradient(ellipse 60% 35% at 85% 5%, rgb(167 139 250 / 0.3), transparent),
+    linear-gradient(180deg, #020617 0%, #1e1b4b 60%, #312e81 100%);
+}
+.scene-cloudy-day {
+  --scene: linear-gradient(180deg, #64748b 0%, #94a3b8 45%, #e2e8f0 100%);
+}
+.scene-cloudy-night {
+  --scene: linear-gradient(180deg, #020617 0%, #1e293b 55%, #475569 100%);
+}
+.scene-rain-day {
+  --scene: linear-gradient(180deg, #334155 0%, #475569 45%, #94a3b8 100%);
+}
+.scene-rain-night {
+  --scene: linear-gradient(180deg, #020617 0%, #0f172a 50%, #334155 100%);
+}
+.scene-storm {
+  --scene: linear-gradient(180deg, #0f0a1f 0%, #312e81 50%, #4b5563 100%);
+}
+.scene-snow {
+  --scene: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 45%, #f8fafc 100%);
+}
+.scene-fog {
+  --scene: linear-gradient(180deg, #6b7280 0%, #9ca3af 45%, #e5e7eb 100%);
+}
+
+/* ---------- Detalhes ---------- */
+
+/* Barra de rolagem discreta na previsão hora a hora. */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(100 116 139 / 0.5) transparent;
+}
+
+/* Respeita quem pediu ao sistema para reduzir animações. Os ícones de clima
+   também trocam para a versão parada (ver WeatherIcon.tsx). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
