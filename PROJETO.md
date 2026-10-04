@@ -18,6 +18,7 @@ Um **aplicativo web de acompanhamento do clima** que funciona bem em qualquer te
 | **Orçamento** | **Zero**: só serviços e hospedagem gratuitos |
 | **Nível do autor** | Iniciante em programação, então as soluções devem ser simples e bem documentadas |
 | **Nome** | **Aurora** |
+| **Endereços** | App: https://aurora-six-rho.vercel.app/ · Código: https://github.com/MateusAlbuquerqueps/aurora |
 
 ### O que significa "portfólio" para as decisões
 Como o objetivo é mostrar trabalho, o app precisa **parecer profissional**: visual bonito, rápido, sem erros, código organizado e um README caprichado com prints e link para a versão online.
@@ -169,7 +170,7 @@ O autor ainda não programa, então a escolha prioriza **facilidade de aprendiza
 - [x] Localização por GPS
 - [x] Layout responsivo (celular, tablet, desktop)
 - [x] Visual dinâmico pelo clima + tema claro/escuro
-- [ ] Publicado na Vercel com link público
+- [x] Publicado na Vercel com link público: https://aurora-six-rho.vercel.app/
 
 ### Fase 2: Personalização
 - [ ] Cidades favoritas

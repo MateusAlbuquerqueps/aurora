@@ -2,7 +2,9 @@
 
 Aplicativo web de previsão do tempo para qualquer cidade do mundo, feito para funcionar bem em qualquer tela, do celular ao monitor.
 
-> 🚧 Em desenvolvimento: Fase 1 (MVP). Veja o planejamento completo em [PROJETO.md](PROJETO.md).
+**🌐 Acesse: [aurora-six-rho.vercel.app](https://aurora-six-rho.vercel.app/)**
+
+> 🚧 Em desenvolvimento: Fase 1 (MVP) concluída. Veja o planejamento completo em [PROJETO.md](PROJETO.md).
 
 ## Funcionalidades
 
