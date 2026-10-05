@@ -49,14 +49,6 @@ export const MoonIcon = (p: Props) => (
   </Svg>
 )
 
-/** Meio sol, meio lua: tema automático. */
-export const AutoThemeIcon = (p: Props) => (
-  <Svg {...p}>
-    <circle cx="12" cy="12" r="8" />
-    <path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" />
-  </Svg>
-)
-
 export const SpinnerIcon = ({ className = 'size-5' }: Props) => (
   <Svg className={`${className} animate-spin`}>
     <path d="M12 3a9 9 0 1 0 9 9" />

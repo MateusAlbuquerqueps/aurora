@@ -4,8 +4,6 @@ import { loadItem, saveItem } from '../lib/storage'
 // "system" segue a configuração do aparelho; "light"/"dark" são escolhas fixas.
 export type ThemeMode = 'system' | 'light' | 'dark'
 
-const NEXT: Record<ThemeMode, ThemeMode> = { system: 'light', light: 'dark', dark: 'system' }
-
 const darkQuery = () => window.matchMedia('(prefers-color-scheme: dark)')
 
 export function useTheme() {
@@ -27,11 +25,14 @@ export function useTheme() {
     document.documentElement.classList.toggle('dark', isDark)
   }, [isDark])
 
-  const cycle = () => {
-    const next = NEXT[mode]
+  // Cada clique sempre inverte o tema visível. Se a escolha coincidir com o
+  // tema do aparelho, voltamos ao modo automático para acompanhá-lo de novo.
+  const toggle = () => {
+    const wantDark = !isDark
+    const next: ThemeMode = wantDark === systemDark ? 'system' : wantDark ? 'dark' : 'light'
     setMode(next)
     saveItem('theme', next)
   }
 
-  return { mode, isDark, cycle }
+  return { mode, isDark, toggle }
 }

@@ -84,7 +84,7 @@ export default function App() {
           </a>
           <SearchBar onSelect={choosePlace} />
           <LocationButton onClick={locate} locating={geo.locating} />
-          <ThemeToggle mode={theme.mode} onClick={theme.cycle} />
+          <ThemeToggle mode={theme.mode} isDark={theme.isDark} onClick={theme.toggle} />
         </header>
 
         {geo.error && (
